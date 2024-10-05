@@ -1,0 +1,43 @@
+
+<div class = "main-detail">
+    <div class = "sub-text">
+        Hello <br>
+        Hello <br>
+        Hello
+    </div>
+    <div class = "navbar">
+        <button (click) = "frontPageReturn()"> Go back </button>
+    </div>
+    <img class = "image-display" [src] = "singleShoes.folderName + singleShoes.listOfDetailedImage[0] + singleShoes.imageFileType">
+    <h1> {{singleShoes.nameOfproduct}} </h1>
+    <p> Men's Shoes </p>
+    <br>
+    <h4 style="padding-left:620px"> {{finalPrice}} </h4>
+    <br>
+    <p> Select Size </p>
+    <br>
+    <div class = "adjust">
+        @for(color of listOfSizes; track color) {
+            <button> EU {{40}} </button>
+        }
+    </div>
+    <div class = "add-item">
+        <button class = "save-item"> Add to bag </button>
+        <button class = "favourite"> Favourite </button>
+    </div>    
+    <p> {{singleShoes.description}} </p>
+    <br>
+    <br>
+    <ul>
+        <li> Colors Shown: {{finalColorsString}} </li>
+        <li> Country / Region of Origin: {{finalOrigin}} </li>
+    </ul>    
+</div>
+<div class = "sub-doc">
+    
+</div>    
+
+
+
+
+

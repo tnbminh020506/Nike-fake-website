@@ -1,0 +1,15 @@
+.heading {
+    position: sticky;
+    font-size: 30px;
+    padding: 20px;
+    width: 100%;
+    background-color: azure;
+    text-align: center;
+    bottom: 5rem;
+}
+.block {
+    margin: 40px;
+    width: 300px;
+    height: 500px;
+    background-color: antiquewhite;
+}

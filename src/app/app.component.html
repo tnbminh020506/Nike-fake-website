@@ -1,0 +1,11 @@
+<!-- <app-initial-page></app-initial-page> -->
+
+<ng-container *ngIf = "detail_turn_on"> 
+    <app-detail-product (my_own_event)="receiveMessage_from_detail_page($event)"></app-detail-product>
+</ng-container>
+
+<ng-container *ngIf = "!detail_turn_on" >
+    <app-first-page (event) = receiveMessage_from_front_page($event) ></app-first-page>
+</ng-container>
+
+<!-- <app-test-build></app-test-build> -->
