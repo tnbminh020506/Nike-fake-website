@@ -4,10 +4,12 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { InitialPageComponent } from "./0-initial-page/initial-page.component";
 import { FirstPageComponent } from "./1-first-page/first-page.component";
+import { DetailProductComponent } from "./2-detail-product/detail-product.component";
+import { HeaderComponent } from "./3-header/header.component";
+import { TestBuildComponent } from "./test-build/test-build.component";
+
 import { ProductService } from "./product/product.service";
 import { ProductData } from "./product/product-data";
-import { DetailProductComponent } from "./2-detail-product/detail-product.component";
-import { TestBuildComponent } from "./test-build/test-build.component";
 
 @NgModule({
     declarations: [
@@ -16,6 +18,7 @@ import { TestBuildComponent } from "./test-build/test-build.component";
         FirstPageComponent,
         DetailProductComponent,
         TestBuildComponent,
+        HeaderComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
@@ -10,7 +11,7 @@ import { ProductService } from '../product/product.service';
   templateUrl: './detail-product.component.html',
   styleUrl: './detail-product.component.css'
 })
-export class DetailProductComponent {
+export class DetailProductComponent implements OnInit {
 
   listOfShoes !: Shoes[];
   singleShoes !: Shoes;
@@ -24,11 +25,13 @@ export class DetailProductComponent {
 
   listOfSizes : number[] = [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45, 45.5, 46, 47, 47.5];
 
+  listOfSubImage !: string[];
+
   // Assigning values for css
   sticky_block_height : number = 500;
   // Ending css assigning
 
-  @Output() my_own_event = new EventEmitter;
+  @Output() previous_page_request_active = new EventEmitter;
 
   constructor(private shared : ProductService) { 
       this.shared.setData();
@@ -37,9 +40,11 @@ export class DetailProductComponent {
       // this.singleShoes = this.listOfShoes[0];
       this.colorsDisplayed = this.singleShoes.listOfcolors;
       this.listOfOrigin = this.singleShoes.origin;
+      this.listOfSubImage = this.singleShoes.listOfDetailedImage;
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     // handling the shown colors string
     for(let str of this.colorsDisplayed) {
       this.finalColorsString = this.finalColorsString + str + "/"
@@ -60,7 +65,7 @@ export class DetailProductComponent {
   }
 
   frontPageReturn() {
-    this.my_own_event.emit(false);
+    this.previous_page_request_active.emit(false);
     console.log("back successful")
   }
 }

@@ -1,7 +1,11 @@
+/* .............................................................................. */
+/* ...................................const DOM.................................. */
+/* .............................................................................. */
 .main-detail {
     width: 100%;
     position: relative;
     top: 0;
+    /* background-color: aqua; */
 }
 .sub-text {
     background-color: antiquewhite;
@@ -16,40 +20,89 @@
     height: 1000px;
     position: relative;
 }
+
+/* .............................................................................. */
+/* ....................................flexible.................................. */
+/* .............................................................................. */
+
+:host {
+    --small-width-standard: 60px;
+    --main-image-width: 400px;
+    --main-detail-margin-top: 30px;
+    --button-space-navbar: 120px;   
+    --image-space-navbar: 10px;
+    --content-space-image: 30px;
+    --content-margin-left: calc(var(--small-width-standard) * 2 + var(--button-space-navbar) + var(--image-space-navbar) + var(--main-image-width) + var(--content-space-image));
+}
+
+/* .............................................................................. */
+/* ..........................main.component.in.detail............................ */
+/* .............................................................................. */
+
 .navbar {
-    width: 50px;
-    height: 500px;
+    width: var(--small-width-standard);
+    max-height: 500px;
+    overflow-y: scroll;
     position: sticky;
+    margin-left: var(--button-space-navbar);
     float: left;
     top: 2rem;
     /* background-color: rgba(149, 228, 234, 0.52); */
-    margin-top: 30px;
+    margin-top: var(--main-detail-margin-top);
     z-index: 1;
 }
-.main-detail img {
-    width: 400px;
+.navbar::-webkit-scrollbar {
+    background: transparent;
+    width: 0px;
+}
+.detail-image {
+    width: var(--small-width-standard);
+    height: var(--small-width-standard);
+    border-radius: 5px;
+}
+.main-detail .return-button {
+    width: var(--small-width-standard);
+    position: sticky;
+    float: left;
+    top: 2rem;
+    margin-top: var(--main-detail-margin-top);
+    z-index: 1;
+}
+.image-display {
+    width: var(--main-image-width);
     height: 500px;
     float: left;
-    margin-top: 30px;
-    margin-left: 140px;
+    margin-top: var(--main-detail-margin-top);
+    margin-left: var(--image-space-navbar);
     position: sticky;
     top: 2rem;
     border-radius: 15px;
 }
+
+/* .............................................................................. */
+/* ...............................main.text.in.detail............................ */
+/* .............................................................................. */
+
 .main-detail p{
-    padding-left: 620px;
+    padding-top: 20px;
+    padding-left: var(--content-margin-left);
     font-size: 17px;
-    line-height: 26px;
+    line-height: 25px;
     width: 420px;
     position: relative;
 }
 .main-detail h1{
     padding-top: 30px;
-    padding-left: 620px;
+    padding-left: var(--content-margin-left);
+    position: relative;
+}
+.main-detail h4{
+    padding-top: 20px;
+    padding-left: var(--content-margin-left);
     position: relative;
 }
 .main-detail ul {
-    padding-left: 620px;
+    padding-left: var(--content-margin-left);
     position: relative;
 }
 .main-detail li {
@@ -58,7 +111,12 @@
     font-size: 17px;
     line-height: 25px;
     position: relative;
+    padding-top: 7px;
 }
+
+/* .............................................................................. */
+/* .............................main.button.in.detail............................ */
+/* .............................................................................. */
 
 .adjust button {
     width: 65px;
@@ -71,22 +129,23 @@
     margin-top: 5px;
 }
 .adjust {
-    padding-left: 620px;
+    padding-top: 8px;
+    padding-left: var(--content-margin-left);
     margin-bottom: 25px;
     width: 380px;
     position: relative;
 }
 .add-item{
-    padding-left: 620px;
-    margin-top: 50px;
+    padding-left: var(--content-margin-left);
+    margin-top: 40px;
     width: 420px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 .add-item .save-item {
     width: 90%;
-    height: 70px;
+    height: 60px;
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 15px;
     background: black;
     color: white;
     font-weight: 550;
@@ -95,12 +154,11 @@
 .add-item .favourite {
     position: relative;
     width: 90%;
-    height: 70px;
+    height: 60px;
     border-radius: 30px;
-    font-size: 18px;
-    border-radius: 1px solid blue;
+    font-size: 15px;
+    border: 1px solid grey;
     background: white;
-    color: black;
     font-weight: 550;
 }
 

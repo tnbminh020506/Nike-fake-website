@@ -1,6 +1,8 @@
-import { Component, EnvironmentInjector } from '@angular/core';
+import { Component, EnvironmentInjector, OnInit } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { HostListener } from '@angular/core';
+import { Renderer2 } from '@angular/core';
 
 import { Shoes } from '../product/product';
 import { ProductService } from '../product/product.service';
@@ -11,19 +13,53 @@ import { ProductService } from '../product/product.service';
   styleUrl: './first-page.component.css'
 })
 
-export class FirstPageComponent {
-  @Output() event = new EventEmitter;
+export class FirstPageComponent implements OnInit {
+  @Output() detail_page_request_active = new EventEmitter;
   ShoesData !: Shoes[];
   imageUrl !: string[];
 
-  constructor(private sharedata : ProductService) {
+  constructor(private sharedata : ProductService, private render : Renderer2) {
     this.sharedata.setData();
     this.ShoesData = this.sharedata.getData();
     // console.log(this.ShoesData);
   }
 
+  changeStyleTop(value : string, compo : string) {
+    let DOM = document.querySelector(compo) as HTMLElement;
+    if(DOM != null) {
+      this.render.setStyle(DOM, 'top', value);
+    }
+  }
+
   Event(product : Shoes) {
     this.sharedata.setShoes(product)
-    this.event.emit(true)
+    this.detail_page_request_active.emit(true)
+  }
+
+  lastScrollTop: number = 0;
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > this.lastScrollTop) {
+      // Scrolling down
+      this.changeStyleTop('0px', '.navbar');
+    } 
+    else {
+      // Scrolling up
+      let value = this.sharedata.getAnyValue("height-of-main-header");
+      this.changeStyleTop(value, '.navbar');
+    }
+
+    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  }
+
+  ngOnInit() {
+    window.scrollTo(0, 0);
+    window.addEventListener('beforeunload', () => {
+      window.scrollTo(0, 0)
+    });
+    this.changeStyleTop('0px', '.navbar');  
   }
 }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-initial-page',
@@ -6,9 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './initial-page.component.css'
 })
 export class InitialPageComponent {
+
   constructor() {}
+
+  @Output() first_page_request_active = new EventEmitter;
 
   goToSite() {
     console.log("Heading to Shopping Site successful!");
+    this.first_page_request_active.emit(true);
   }
 }

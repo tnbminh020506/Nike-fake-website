@@ -9,6 +9,9 @@ export class ProductService {
     productdata !: Shoes[];
     singleShoes !: Shoes;
     detail_turn_on !: boolean;
+
+    valuePassing !: any;
+    passingCode !: string;
     constructor(private sharedata : ProductData) {}
 
     // Service for passing entire database
@@ -28,6 +31,15 @@ export class ProductService {
     }
     getShoes() {
         return this.singleShoes;
+    }
+
+    setAnyValue(value : any, message : string) {
+        this.valuePassing = value;
+        this.passingCode = message;
+    }
+    getAnyValue(message : string) {
+        if(message = this.passingCode)
+            return this.valuePassing;
     }
 
     // Boolean value for turning on/off the detail page
