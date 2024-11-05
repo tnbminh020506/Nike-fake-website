@@ -2,9 +2,9 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";  
 
 import { AppComponent } from "./app.component";
-import { InitialPageComponent } from "./0-initial-page/initial-page.component";
-import { FirstPageComponent } from "./1-first-page/first-page.component";
-import { DetailProductComponent } from "./2-detail-product/detail-product.component";
+import { InitialPageComponent } from "./initial-page/initial-page.component";
+import { FirstPageComponent } from "./shoes-page/shoes-page.component";
+import { DetailProductComponent } from "./detail-product/detail-product.component";
 import { HeaderComponent } from "./3-header/header.component";
 import { TestBuildComponent } from "./test-build/test-build.component";
 

@@ -1,0 +1,201 @@
+/* .............................................................................. */
+/* ...................................const DOM.................................. */
+/* .............................................................................. */
+.body {
+    background-image: url("/assets/img/shoes-wall.jpg");
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-position-y: 30%;
+    background-position-x: 70%; 
+    background-size: 80%;    
+}
+
+.main-detail {
+    width: 100%;
+    position: relative;
+    top: 0;
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    /* color: red; */
+}
+.sub-text {
+    background-color: antiquewhite;
+    width: 100%;
+    font-size: 18px;
+    line-height: 25px;
+    position: relative;
+}
+.sub-doc {
+    background-color: lightyellow;
+    width: 100%;
+    height: 1000px;
+    position: relative;
+}
+
+/* .............................................................................. */
+/* ....................................flexible.................................. */
+/* .............................................................................. */
+
+:host {
+    --small-width-standard: 60px;
+    --main-image-width: 400px;
+    --main-detail-margin-top: 30px;
+    --button-space-navbar: 120px;   
+    --image-space-navbar: 10px;
+    --content-space-image: 30px;
+    --content-margin-left: calc(var(--small-width-standard) * 2 + var(--button-space-navbar) + var(--image-space-navbar) + var(--main-image-width) + var(--content-space-image));
+}
+
+/* .............................................................................. */
+/* ..........................main.component.in.detail............................ */
+/* .............................................................................. */
+
+.navbar {
+    width: var(--small-width-standard);
+    height: 500px;
+    overflow-y: scroll;
+    position: sticky;
+    margin-left: var(--button-space-navbar);
+    float: left;
+    top: 2rem;
+    /* background-color: rgba(149, 228, 234, 0.52); */
+    margin-top: var(--main-detail-margin-top);
+    z-index: 1;
+}
+.navbar::-webkit-scrollbar {
+    background: transparent;
+    width: 0px;
+}
+.detail-image {
+    width: var(--small-width-standard);
+    height: var(--small-width-standard);
+    /* width: 60px; */
+    /* height: 60px; */
+    z-index: 100;
+    border-radius: 5px;
+}
+.detail-image-button {
+    border: none;
+}
+.main-detail .return-button {
+    width: var(--small-width-standard);
+    position: sticky;
+    float: left;
+    top: 2rem;
+    margin-top: var(--main-detail-margin-top);
+    z-index: 1;
+}
+.image-display {
+    width: var(--main-image-width);
+    height: 500px;
+    float: left;
+    margin-top: var(--main-detail-margin-top);
+    margin-left: var(--image-space-navbar);
+    position: sticky;
+    top: 2rem;
+    border-radius: 15px;
+}
+
+/* .............................................................................. */
+/* ...............................main.text.in.detail............................ */
+/* .............................................................................. */
+
+.main-detail p{
+    padding-top: 20px;
+    /* padding-left: var(--content-margin-left); */
+    font-size: 17px;
+    line-height: 25px;
+    width: 420px;
+    position: relative;
+}
+.main-detail h1{
+    padding-top: 30px;
+    /* padding-left: var(--content-margin-left); */
+    position: relative;
+}
+.main-detail h4{
+    padding-top: 20px;
+    /* padding-left: var(--content-margin-left); */
+    position: relative;
+}
+.main-detail ul {
+    /* padding-left: var(--content-margin-left); */
+    position: relative;
+}
+.main-detail li {
+    max-width: 380px;
+    margin-left: 20px;
+    font-size: 17px;
+    line-height: 25px;
+    position: relative;
+    padding-top: 7px;
+}
+
+/* .............................................................................. */
+/* .............................main.button.in.detail............................ */
+/* .............................................................................. */
+
+.content-block {
+    /* background-color: antiquewhite; */
+    width: 420px;
+    margin-left: var(--content-margin-left);
+    /* float: left; */
+}
+
+.adjust button {
+    width: 65px;
+    height: 40px;
+    font-size: 16px;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    background-color: white;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.adjust button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.adjust {
+    padding-top: 8px;
+    /* padding-left: var(--content-margin-left); */
+    margin-bottom: 25px;
+    width: 380px;
+    position: relative;
+}
+.add-item{
+    /* padding-left: var(--content-margin-left); */
+    margin-top: 40px;
+    width: 420px;
+    margin-bottom: 50px;
+}
+
+.add-item .save-item {
+    width: 90%;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 15px;
+    background: black;
+    color: white;
+    font-weight: 550;
+    margin-bottom: 20px;
+}
+.add-item .save-item:hover {
+    box-shadow: 10px 10px 10px grey;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-item .favourite {
+    position: relative;
+    width: 90%;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 15px;
+    border: 1px solid grey;
+    background: white;
+    font-weight: 550;
+}
+.add-item .favourite:hover {
+    box-shadow: 10px 10px 10px lightgrey;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+

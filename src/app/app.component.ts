@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { ProductService } from './product/product.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,26 +10,42 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Tnbm-Shopping-Website';
 
-  page_is_on !: boolean[];
+  page_0_ison !: boolean;
+  page_1_ison !: boolean;
+  page_2_ison !: boolean;
 
   current_page !: number;
 
+  constructor(private shared_method : ProductService) {}
+
   ngOnInit() {
+    this.shared_method.setData();
+    this.page_0_ison = true;
+    this.page_1_ison = false;
+    this.page_2_ison = false;
     this.current_page = 0;
-    for(let i = 1; i <= 105; i++) {
-      this.page_is_on[i] = false;
-    }
-    this.page_is_on[0] = true;
   }
-  receiveMessage_from_front_page($event : boolean) {
-    this.page_is_on[this.current_page] = false;
-    this.current_page++;
-    this.page_is_on[this.current_page] = true;
+  receiveMessage_from_front_page() {
+    this.page_0_ison = false;
+    this.page_1_ison = true;
+    this.current_page = 1;
   }
   receiveMessage_from_first_page($event : boolean) {
-    this.current_page = 2;
+    if($event == true) {
+      this.page_1_ison = false;
+      this.page_2_ison = true;
+      this.current_page = 2;
+     
+    }
+    else {
+      this.page_0_ison = true;
+      this.page_1_ison = false;
+    }
   }
   receiveMessage_from_detail_page($event : boolean) {
-    this.current_page--;
+    if($event == false) {
+      this.page_1_ison = true;
+      this.page_2_ison = false;
+    }
   }
 }

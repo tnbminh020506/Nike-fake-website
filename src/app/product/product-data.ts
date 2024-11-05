@@ -1,13 +1,13 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api'
 
-import { Shoes } from './product';
-
+import { createShoes, Shoes } from './product';
 
 export class ProductData implements InMemoryDbService {
     products !: Shoes[]
+    id : number = 0;
     createDb() : Shoes[] {
         this.products = [
-            {   // 1
+            createShoes({   // 1
                 nameOfproduct: 'Air Jordan 1 Low',
                 price: 3239000,
                 description: "Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. With an iconic design that pairs perfectly with any 'fit, these kicks ensure you'll always be on point.",
@@ -19,8 +19,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Varsity Red", "Black"],
                 origin: ["Indonesia", "Vietnam"],
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-shoes-zTWr01/553558-161",
-            },
-            {   // 2
+            }),
+            createShoes({   // 2
                 nameOfproduct: 'Air Jordan 1 Low',
                 price: 3239000,
                 description: "Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. With an iconic design that pairs perfectly with any 'fit, these kicks ensure you'll always be on point.",
@@ -32,8 +32,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["white", "Black", "Metallic Gold"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/w/mens-jordan-low-top-shoes-37eefz7hf8eznik1zy7ok",
-            },
-            {   // 3
+            }),
+            createShoes({   // 3
                 nameOfproduct: 'Air Jordan 1 Low',
                 price: 3239000,
                 description: "Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. With an iconic design that pairs perfectly with any 'fit, these kicks ensure you'll always be on point.",
@@ -45,8 +45,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Midnight Navy", "Wolf Grey"],
                 origin: ["Indonesia"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-shoes-6Q1tFM/553558-141",
-            },
-            {   // 4
+            }),
+            createShoes({   // 4
                 nameOfproduct: 'Air Jordan 1 Low',
                 price: 3519000,
                 description: "Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a classic look designed with premium materials like leather and suede, creating a look curated for the City of Light.",
@@ -58,8 +58,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Football Grey", "Summit White", "Sky Grey"],
                 origin: ["China"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-shoes-zlGlds/CV3043-100",
-            },
-            {   // 5
+            }),
+            createShoes({   // 5
                 nameOfproduct: 'Air Jordan 1 Low',
                 price: 3239000,
                 description: "Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. With an iconic design that pairs perfectly with any 'fit, these kicks ensure you'll always be on point.",
@@ -71,8 +71,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-shoes-zTWr01/553558-136",
-            },
-            {   // 6
+            }),
+            createShoes({   // 6
                 nameOfproduct: 'Air Jordan 1 Low',
                 price: 3239000,
                 description: "Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. With an iconic design that pairs perfectly with any 'fit, these kicks ensure you'll always be on point.",
@@ -84,8 +84,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Green Glow", "Black"],
                 origin: ["Unknown"], 
                 linkMain: "",
-            },
-            {   // 7
+            }),
+            createShoes({   // 7
                 nameOfproduct: 'Air Jordan 1 Low G',
                 price: 4109000,
                 description: "Feel unbeatable, from the tee box to the final putt. Inspired by one of the most iconic sneakers of all time, the Air Jordan 1 G is an instant classic on the course. With Air cushioning underfoot, a Wings logo on the heel and an integrated traction pattern to help you power through your swing, it delivers all the clubhouse cool of the original AJ1—plus everything you need to play 18 holes in comfort.",
@@ -97,8 +97,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Aegeon Storm", "Armoury Navy"],
                 origin: ["China"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-g-golf-shoes-8bKbqs/DD9315-115",
-            },
-            {   // 8
+            }),
+            createShoes({   // 8
                 nameOfproduct: 'Air Jordan 1 Low SE',
                 price: 3669000,
                 description: "An AJ1 in easy-to-style neutrals? Game over. Smooth leather and soft suede add a premium feel. Plus, Nike Air cushioning helps keep every step comfortable. So, where are you going to take 'em?",
@@ -110,8 +110,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Legend Light Brown", "Sail", "Neutral Grey", "Archaeo Brown"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-se-shoes-FTrFvs/HF1567-200",
-            },
-            {   // 9
+            }),
+            createShoes({   // 9
                 nameOfproduct: 'Jordan Stadium 90',
                 price: 4109000,
                 description: "Comfort is king, but that doesn't mean you have to sacrifice style. Taking design inspiration from the AJ1 and AJ5, the Stadium 90 is ready for everyday wear. The upper is made from leather and airy woven, so you get both breathability and durability, and Nike Air cushioning in the sole keeps your every step light and cushioned.",
@@ -123,8 +123,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Pale Ivory", "Aegeon Storm", "Armoury Navy"],
                 origin: ["China"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-stadium-90-shoes-1KZncD/HM3713-141",
-            },
-            {   // 10
+            }),
+            createShoes({   // 10
                 nameOfproduct: 'Air Jordan 1 Low Quai 54',
                 price: 4109000,
                 description: "After celebrating 20 years of partnership, we wanted to get back to Quai 54 basics: streetball, Paris and Jordan. We cut away the excess to create a shoe that's a sophisticated staple. And what's more of a staple than the always-stylish AJ1?",
@@ -136,8 +136,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Off-Noir", "Summit White", "Burnt Sunrise", "Sail"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-quai-54-shoes-FmKDX1/HQ0764-001",
-            },
-            {   // 11
+            }),
+            createShoes({   // 11
                 nameOfproduct: 'Air Jordan 1 Low SE Craft',
                 price: 4109000,
                     description: "Each Craft released puts a handmade feel on the AJ1 and these low-cut sneakers are no exception. Sandy neutrals come together in kicks that beg to be a part of every outfit. Premium suede adds texture while a lightly speckled outsole grounds your look with subtle detail.",
@@ -149,8 +149,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Pale Ivory", "Legend Light Brown", "Sail"],
                 origin: ["Indonesia"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-se-craft-shoes-8SsDw6/FQ3055-100",
-            },
-            {   // 12
+            }),
+            createShoes({   // 12
                 nameOfproduct: 'Air Jordan 1 Low SE',
                 price: 3519000,
                 description: "New colours and fresh textures give you an updated AJ1 without losing its iconic silhouette and familiar feel. Made from premium materials, this all-time favourite comes decked out with comfortable Nike Air cushioning and subtle design details (check out that embroidered heel) to give you a staple sneaker with a modern look.",
@@ -162,8 +162,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Seafoam", "Sail"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-1-low-se-shoes-hgcLbC/FN5214-131",
-            },
-            {   // 13
+            }),
+            createShoes({   // 13
                 nameOfproduct: 'Jordan Spizike Low',
                 price: 4699000,
                 description: "The Spizike takes elements of five classic Jordans, combines them and gives you one iconic sneaker. It's an homage to Spike Lee formally introducing Hollywood and hoops in a culture moment. You get a great-looking pair of kicks with some history. What more can you ask for? Ya dig?",
@@ -175,8 +175,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Wolf Grey", "Anthracite", "Team Red"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-spizike-low-shoes-pBZk7c/FQ1759-106",
-            },
-            {   // 14
+            }),
+            createShoes({   // 14
                 nameOfproduct: 'Jordan Spizike Low',
                 price: 4699000,
                 description: "The Spizike takes elements of five classic Jordans, combines them and gives you one iconic sneaker. It's an homage to Spike Lee formally introducing Hollywood and hoops in a culture moment. You get a great-looking pair of kicks with some history. What more can you ask for? Ya dig?",
@@ -188,8 +188,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Sail", "Coconut Milk", "Sandstone", "University Red"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-spizike-low-shoes-pBZk7c/FQ1759-100",
-            },
-            {   // 15
+            }),
+            createShoes({   // 15
                 nameOfproduct: 'Jordan Spizike Low',
                 price: 4699000,
                 description: "The Spizike takes elements of five classic Jordans, combines them and gives you one iconic sneaker. It's an homage to Spike Lee formally introducing Hollywood and hoops in a culture moment. You get a great-looking pair of kicks with some history. What more can you ask for? Ya dig?",
@@ -201,8 +201,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Archaeo Brown", "Light Brown", "Pink Oxford"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-spizike-low-shoes-pBZk7c/FQ1759-101",
-            },
-            {   // 16
+            }),
+            createShoes({   // 16
                 nameOfproduct: 'Jordan Spizike Low',
                 price: 4699000,
                 description: "The Spizike takes elements of five classic Jordans, combines them and gives you one iconic sneaker. It's an homage to Spike Lee formally introducing Hollywood and hoops in a culture moment. You get a great-looking pair of kicks with some history. What more can you ask for? Ya dig?",
@@ -214,8 +214,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Anthracite", "Black", "Gym Red"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-spizike-low-shoes-pBZk7c/FQ1759-002",
-            },
-            {   // 17
+            }),
+            createShoes({   // 17
                 nameOfproduct: 'Jordan Stadium 90',
                 price: 4109000,
                 description: "Comfort is king, but that doesn't mean you have to sacrifice style. Taking design inspiration from the AJ1 and AJ5, the Stadium 90 is ready for everyday wear. The upper is made from leather and airy woven, so you get both breathability and durability, and Nike Air cushioning in the sole keeps your every step light and cushioned.",
@@ -227,8 +227,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Sail", "Cream", "Coconut Millk", "Standstone"],
                 origin: ["China"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-stadium-90-shoes-Jn6ZH4/DX4397-110",
-            },
-            {   // 18
+            }),
+            createShoes({   // 18
                 nameOfproduct: "Air Jordan Legacy 312 Low",
                 price: 4259000,
                 description: "Celebrate MJ's legacy with this shout-out to Chicago's 312 area code. With elements from three iconic Jordans (the AJ3, AJ1 and Air Alpha Force), it's a modern mash-up that reps the best.",
@@ -240,8 +240,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Midnight Navy", "White", "Wolf Grey", "Varsity Red"],
                 origin: ["Indonesia"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-legacy-312-low-shoes-6Vd4Xl/CD7069-164",
-            },
-            {   // 19
+            }),
+            createShoes({   // 19
                 nameOfproduct: "Air Jordan Legacy 312 Low",
                 price: 4259000,
                 description: "Celebrate MJ's legacy with this shout-out to Chicago's 312 area code. With elements from three iconic Jordans (the AJ3, AJ1 and Air Alpha Force), it's a modern mash-up that reps the best.",
@@ -253,8 +253,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Black", "Cool Grey", "Oxidised Green"],
                 origin: ["Indonesia"], 
                 linkMain: "https://www.nike.com/vn/t/air-jordan-legacy-312-low-shoes-6Vd4Xl/CD7069-131",
-            }, 
-            {   // 20
+            }), 
+            createShoes({   // 20
                 nameOfproduct: "Jordan One Take 5 PF",
                 price: 2929000,
                 description: "Accelerate, bank, shoot, score—then repeat. Russell Westbrook's latest shoe is here to assist your speed game so you can stay unstoppable on the break. The lateral eyestay and wraparound toe piece help you feel contained on the court. Underfoot, you get energy-returning Zoom Air cushioning in the forefoot so you can keep sinkin' 'em from the first to the fourth.",
@@ -266,8 +266,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Phantom", "Sand Drift", " Sail", "Game Royal"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-one-take-5-pf-shoes-jNx9SV/FD2336-004",
-            },
-            {   // 21
+            }),
+            createShoes({   // 21
                 nameOfproduct: "Jordan One Take 5 PF",
                 price: 2929000,
                 description: "Accelerate, bank, shoot, score—then repeat. Russell Westbrook's latest shoe is here to assist your speed game so you can stay unstoppable on the break. The lateral eyestay and wraparound toe piece help you feel contained on the court. Underfoot, you get energy-returning Zoom Air cushioning in the forefoot so you can keep sinkin' 'em from the first to the fourth.",
@@ -279,8 +279,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Artic Punch", "Black"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-one-take-5-pf-shoes-jNx9SV/FD2336-100",
-            },
-            {   // 22
+            }),
+            createShoes({   // 22
                 nameOfproduct: "Jordan One Take 5 PF",
                 price: 2929000,
                 description: "Accelerate, bank, shoot, score—then repeat. Russell Westbrook's latest shoe is here to assist your speed game so you can stay unstoppable on the break. The lateral eyestay and wraparound toe piece help you feel contained on the court. Underfoot, you get energy-returning Zoom Air cushioning in the forefoot so you can keep sinkin' 'em from the first to the fourth.",
@@ -291,8 +291,8 @@ export class ProductData implements InMemoryDbService {
                 numberOfcolors: 1,
                 listOfcolors: ["Black", "White", "Anthracite", "Habanero Red"],
                 origin: [""], linkMain: "",
-            },
-            {   // 23
+            }),
+            createShoes({   // 23
                 nameOfproduct: "Jordan One Take 5 PF",
                 price: 2929000,
                 description: "Accelerate, bank, shoot, score—then repeat. Russell Westbrook's latest shoe is here to assist your speed game so you can stay unstoppable on the break. The lateral eyestay and wraparound toe piece help you feel contained on the court. Underfoot, you get energy-returning Zoom Air cushioning in the forefoot so you can keep sinkin' 'em from the first to the fourth.",
@@ -304,8 +304,8 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["Stone Blue", "Mystic Navy", "Midnight Navy", "Bleached Coral"],
                 origin: ["Vietnam"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-one-take-5-pf-shoes-jNx9SV/FD2336-006",
-            },
-            {   // 24
+            }),
+            createShoes({   // 24
                 nameOfproduct: 'Jordan Stadium 90',
                 price: 4109000,
                 description: "Comfort is king, but that doesn't mean you have to sacrifice style. Taking design inspiration from the AJ1 and AJ5, the Stadium 90 is ready for everyday wear. The upper is made from leather and airy woven, so you get both breathability and durability, and Nike Air cushioning in the sole keeps your every step light and cushioned.",
@@ -317,12 +317,17 @@ export class ProductData implements InMemoryDbService {
                 listOfcolors: ["White", "Legend Light Brown", "Sail", "Archaeon Brown"],
                 origin: ["China"], 
                 linkMain: "https://www.nike.com/vn/t/jordan-stadium-90-shoes-Jn6ZH4/DX4397-121",
-            },
+            }),
             
-        ]
+        ];
+        for(let x of this.products) {
+            x.productId = this.id;
+            this.id++;
+        }
         return this.products;
     }
     updateDb() {    
+
     }
 }
 

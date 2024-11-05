@@ -1,0 +1,41 @@
+<!-- <div class = "body"> </div> -->
+<div class = "main-detail">
+    <app-header (returning_page)="return_request_from_detailpage($event)"> </app-header>
+
+    <div class = "navbar"> 
+        @for(index of listOfSubImage; track index) {
+            <button (click) = "detail_image_event(index)" class = "detail-image-button"> 
+                <img class = "detail-image" [src] = "singleShoes.folderName + index + singleShoes.imageFileType">
+            </button>
+        }
+    </div>
+    <img class = "image-display" [src] = "singleShoes.folderName + singleShoes.listOfDetailedImage[0] + singleShoes.imageFileType">    
+
+    <div class = "content-block">
+        <h1> {{singleShoes.nameOfproduct}} </h1>
+        <p> Men's Shoes </p>
+        <h4> <strong> {{finalPrice}} </strong> </h4>
+        <p> Select Size </p>
+        <div class = "adjust">
+            @for(size of singleShoes.listOfsize; track size) {
+                <button> EU {{size}} </button>
+            }
+        </div>
+        <div class = "add-item">
+            <button class = "save-item"> Add to Bag </button>
+            <button class = "favourite"> Favourite </button>
+        </div>    
+        <p> {{singleShoes.description}} </p>
+        <ul>
+            <li> Colors Shown: <i> {{finalColorsString}} </i> </li>
+            <li> Country/Region of Origin: <i> {{finalOrigin}} </i> </li>
+        </ul>   
+        </div>
+
+</div>
+<div class = "sub-doc"> </div>    
+
+
+
+
+
