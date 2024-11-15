@@ -10,42 +10,33 @@ import { ProductService } from './product/product.service';
 export class AppComponent {
   title = 'Tnbm-Shopping-Website';
 
-  page_0_ison !: boolean;
-  page_1_ison !: boolean;
-  page_2_ison !: boolean;
+  pageison : boolean[] = [false, false, false];
 
-  current_page !: number;
+  current_page : number = 0;
+
+  shop_cart_activate : boolean = false;
 
   constructor(private shared_method : ProductService) {}
 
   ngOnInit() {
     this.shared_method.setData();
-    this.page_0_ison = true;
-    this.page_1_ison = false;
-    this.page_2_ison = false;
-    this.current_page = 0;
+    this.pageison[this.current_page] = true;
   }
-  receiveMessage_from_front_page() {
-    this.page_0_ison = false;
-    this.page_1_ison = true;
-    this.current_page = 1;
-  }
-  receiveMessage_from_first_page($event : boolean) {
-    if($event == true) {
-      this.page_1_ison = false;
-      this.page_2_ison = true;
-      this.current_page = 2;
-     
+  request($event : any) {
+    if(typeof $event === "number") {
+      this.pageison[this.current_page] = false;
+      this.current_page += $event;
+      this.pageison[this.current_page] = true;
     }
     else {
-      this.page_0_ison = true;
-      this.page_1_ison = false;
-    }
-  }
-  receiveMessage_from_detail_page($event : boolean) {
-    if($event == false) {
-      this.page_1_ison = true;
-      this.page_2_ison = false;
+      if($event == "shop_cart") {
+        this.pageison[this.current_page] = false;
+        this.shop_cart_activate = true;
+      }
+      else {
+        this.pageison[this.current_page] = true;
+        this.shop_cart_activate = false;
+      }
     }
   }
 }

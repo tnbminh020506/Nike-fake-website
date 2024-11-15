@@ -1,13 +1,17 @@
-<ng-container *ngIf = "page_0_ison">
-    <app-initial-page (first_page_request_active)="receiveMessage_from_front_page()" ></app-initial-page>
+<ng-container *ngIf = "pageison[0]">
+    <app-initial-page (product_page_request)="request($event)" ></app-initial-page>
 </ng-container>
 
-<ng-container *ngIf = "page_1_ison">
-    <app-first-page (detail_page_request_active) = receiveMessage_from_first_page($event) ></app-first-page>
+<ng-container *ngIf = "pageison[1]">
+    <app-first-page (shoes_page_request) = "request($event)" ></app-first-page>
 </ng-container>
 
-<ng-container *ngIf = "page_2_ison"> 
-    <app-detail-product (previous_page_request_active)="receiveMessage_from_detail_page($event)"></app-detail-product>
+<ng-container *ngIf = "pageison[2]"> 
+    <app-detail-product (detail_product_request)="request($event)"></app-detail-product>
+</ng-container>
+
+<ng-container *ngIf = "shop_cart_activate">
+    <app-shop-cart (turn_of_shop_cart)="request($event)"> </app-shop-cart>
 </ng-container>
 
 

@@ -1,0 +1,13 @@
+<div> 
+    <button (click) = "deactivate_shop_cart()" class = "button">
+        Go back
+    </button>  
+</div>    
+
+<div *ngFor="let shoes of Shoes_list; let i = index" [ngClass] = "{ 'card-even' : i % 2 === 0, 'card-odd' : i % 2 !== 0 }"> 
+    <img class = "img" [src] = "shoes.folderName + shoes.imageDisplay + shoes.imageFileType">
+    <div class = "text">
+        <h1> {{shoes.nameOfproduct}} </h1>
+        <button (click)="product_remove(shoes)" > Remove from your cart </button>
+    </div>
+</div>  

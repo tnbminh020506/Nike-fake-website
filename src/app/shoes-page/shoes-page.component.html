@@ -1,6 +1,6 @@
 <div class = "body"> </div> 
 <div class = "scroll-viewport">
-    <app-header (returning_page)="return_request_from_firstpage($event)"> </app-header>
+    <app-header (returning_page)="return_page($event)"> </app-header>
     <div class = "navbar">
         <header> Men's shoes </header>
         <ul>
@@ -20,7 +20,7 @@
     <div class = "main-doc"> 
         @for (product of ShoesData; track product) {
             <div class = "card">
-                <button (click) = "Event(product)" class = "Image"> <img [src] = "product.folderName + product.imageDisplay + product.imageFileType"> </button>     
+                <button (click) = "next_page(product)" class = "Image"> <img [src] = "product.folderName + product.imageDisplay + product.imageFileType"> </button>     
                 <strong> <p style = "padding-top: 20px; font-size: 18px;"> {{product.nameOfproduct}} </p> </strong>
                 <p> {{ this.currencyDisplayHandle(product) }} </p>
             </div>

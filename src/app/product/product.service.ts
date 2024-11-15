@@ -14,7 +14,9 @@ export class ProductService {
     passingCode !: string;
     constructor(private sharedata : ProductData) {}
 
-    // Service for passing entire database
+    //...............................................................................
+    //...........................handling.data.service...............................
+    //...............................................................................
     setData() {
         this.productdata = this.sharedata.createDb();
     }
@@ -25,7 +27,9 @@ export class ProductService {
         return this.productdata;
     }
 
-    // Service for passing only one Shoes product
+    //...............................................................................
+    // ........................passing.contemporary.product..........................
+    //...............................................................................
     setShoes(product : Shoes) {
         this.singleShoes = product;
     }
@@ -42,5 +46,7 @@ export class ProductService {
             return this.valuePassing;
     }
 
-    // Boolean value for turning on/off the detail page
+    //...............................................................................
+    //............................back.end.service...................................
+    //...............................................................................
 }

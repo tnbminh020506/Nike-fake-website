@@ -5,6 +5,7 @@ import { EventEmitter } from '@angular/core';
 
 import { Shoes } from '../product/product';
 import { ProductService } from '../product/product.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-detail-product',
@@ -14,6 +15,8 @@ import { ProductService } from '../product/product.service';
 export class DetailProductComponent implements OnInit {
 
   singleShoes !: Shoes;
+
+  backendShoesSend !: Shoes[];
 
   colorsDisplayed !: string[];
   finalColorsString : string = "";
@@ -28,25 +31,33 @@ export class DetailProductComponent implements OnInit {
   sticky_block_height : number = 500;
   // Ending css assigning
 
-  @Output() previous_page_request_active = new EventEmitter;
+  @Output() detail_product_request = new EventEmitter;
 
-  constructor(private shared : ProductService) { 
+  constructor(private shared : ProductService, private http_method : HttpClient) { 
       this.singleShoes = this.shared.getShoes();
       this.colorsDisplayed = this.singleShoes.listOfcolors;
       this.listOfOrigin = this.singleShoes.origin;
       this.listOfSubImage = this.singleShoes.listOfDetailedImage;
   }
 
+
+  return_page($event : string) {
+    console.log($event);
+    if($event == "return")
+      this.detail_product_request.emit(-1);
+    else 
+      this.detail_product_request.emit("shop_cart");
+  }
+
+  //.....................................................................................................
+  //.......................................product.property.handling.....................................
+  //.....................................................................................................
   detail_image_event(value : string) {
     let Dom = document.querySelector('.image-display') as HTMLImageElement;
     if(Dom != undefined) {
       Dom.src = this.singleShoes.folderName + value + this.singleShoes.imageFileType;
       // console.log("change");
     }
-  }
-
-  return_request_from_detailpage($event : boolean) {
-    this.previous_page_request_active.emit(false);
   }
 
   colorStringHandle() {
@@ -69,7 +80,23 @@ export class DetailProductComponent implements OnInit {
     this.finalPrice = Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(this.singleShoes.price);
   }
 
-  ngOnInit(): void {
+  //.....................................................................................................
+  //........................................back.end.service.............................................
+  //.....................................................................................................
+  add_to_shop_cart(value : Shoes) {
+    this.http_method.post('http://localhost:5000/product/create', value).subscribe(() => console.log("add to cart successful"));
+    let DOM = document.querySelector(".save-item")    as HTMLElement
+    let curr_save_item_text = DOM.innerText;
+    DOM.innerHTML = "Save to your shopping cart!";
+    DOM.style.backgroundColor = "grey";
+    setTimeout(() => {
+      DOM.innerHTML = curr_save_item_text;
+      DOM.style.backgroundColor = "black";
+    }, 700);
+    
+  }
+
+  ngOnInit() {
 
     window.scrollTo(0, 0);
 

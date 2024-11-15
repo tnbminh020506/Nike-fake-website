@@ -14,7 +14,9 @@ import { ProductService } from '../product/product.service';
 })
 
 export class FirstPageComponent implements OnInit {
-  @Output() detail_page_request_active = new EventEmitter;
+
+  @Output() shoes_page_request = new EventEmitter;
+
   ShoesData !: Shoes[];
   imageUrl !: string[];
 
@@ -22,19 +24,12 @@ export class FirstPageComponent implements OnInit {
     this.ShoesData = this.sharedata.getData();
     // console.log(this.ShoesData);
   }
-
   changeStyleTop(value : string, compo : string) {
     let DOM = document.querySelector(compo) as HTMLElement;
     if(DOM != null) {
       this.render.setStyle(DOM, 'top', value);
     }
   }
-
-  Event(product : Shoes) {
-    this.sharedata.setShoes(product)
-    this.detail_page_request_active.emit(true);
-  }
-
   lastScrollTop: number = 0;
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -61,12 +56,21 @@ export class FirstPageComponent implements OnInit {
     });
     this.changeStyleTop('0px', '.navbar');  
   }
-
-  return_request_from_firstpage($event : boolean) {
-    this.detail_page_request_active.emit(false);
-  }
-
   currencyDisplayHandle(value : Shoes) : string {
     return Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value.price)
+  }
+
+  //..............................................................................................
+  //.....................................ngIf.method..............................................
+  //..............................................................................................
+  next_page(product : Shoes) {
+    this.sharedata.setShoes(product)
+    this.shoes_page_request.emit(1);
+  }
+  return_page($event : string) {
+    if($event == "return")
+      this.shoes_page_request.emit(-1);
+    else  
+      this.shoes_page_request.emit("shop_cart");
   }
 }

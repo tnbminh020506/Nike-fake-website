@@ -55,7 +55,12 @@ export class HeaderComponent {
   }
 
   @Output() returning_page = new EventEmitter;
+  
   Return_previous_page() {
-    this.returning_page.emit(true);
+    this.returning_page.emit("return");
+  }
+
+  Activate_shop_cart() {
+    this.returning_page.emit("shop_cart");
   }
 }

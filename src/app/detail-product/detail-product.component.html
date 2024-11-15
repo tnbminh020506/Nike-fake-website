@@ -1,6 +1,6 @@
 <!-- <div class = "body"> </div> -->
 <div class = "main-detail">
-    <app-header (returning_page)="return_request_from_detailpage($event)"> </app-header>
+    <app-header (returning_page)="return_page($event)"> </app-header>
 
     <div class = "navbar"> 
         @for(index of listOfSubImage; track index) {
@@ -22,7 +22,7 @@
             }
         </div>
         <div class = "add-item">
-            <button class = "save-item"> Add to Bag </button>
+            <button (click) = "add_to_shop_cart(singleShoes)" class = "save-item"> Add to Bag </button>
             <button class = "favourite"> Favourite </button>
         </div>    
         <p> {{singleShoes.description}} </p>
