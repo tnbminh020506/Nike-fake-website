@@ -60,3 +60,6 @@ export class ShopCartComponent {
     });
   }
 }
+
+
+// testing vercel (9:50 .... 15/11/2024)
