@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Renderer2 } from '@angular/core';
 
-import { Shoes } from '../product/product';
-import { ProductService } from '../product/product.service';
+import { Shoes } from '../typescript/product';
+import { ProductService } from '../typescript/product.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-first-page',
@@ -15,12 +15,10 @@ import { ProductService } from '../product/product.service';
 
 export class FirstPageComponent implements OnInit {
 
-  @Output() shoes_page_request = new EventEmitter;
-
   ShoesData !: Shoes[];
   imageUrl !: string[];
 
-  constructor(private sharedata : ProductService, private render : Renderer2) {
+  constructor(private sharedata : ProductService, private render : Renderer2, private router : Router) {
     this.ShoesData = this.sharedata.getData();
     // console.log(this.ShoesData);
   }
@@ -43,7 +41,8 @@ export class FirstPageComponent implements OnInit {
     else {
       // Scrolling up
       let value = this.sharedata.getAnyValue("height-of-main-header");
-      this.changeStyleTop(value, '.navbar');
+      if(value !== undefined)
+        this.changeStyleTop(value, '.navbar');
     }
 
     this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
@@ -56,6 +55,7 @@ export class FirstPageComponent implements OnInit {
     });
     this.changeStyleTop('0px', '.navbar');  
   }
+
   currencyDisplayHandle(value : Shoes) : string {
     return Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value.price)
   }
@@ -64,13 +64,7 @@ export class FirstPageComponent implements OnInit {
   //.....................................ngIf.method..............................................
   //..............................................................................................
   next_page(product : Shoes) {
-    this.sharedata.setShoes(product)
-    this.shoes_page_request.emit(1);
-  }
-  return_page($event : string) {
-    if($event == "return")
-      this.shoes_page_request.emit(-1);
-    else  
-      this.shoes_page_request.emit("shop_cart");
+    this.sharedata.setShoes(product);
+    this.router.navigate(['detail-page', product.nameOfproduct]);
   }
 }

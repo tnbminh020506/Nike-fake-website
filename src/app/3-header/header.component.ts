@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Renderer2 } from '@angular/core';
-import { Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
 
-import { ProductService } from '../product/product.service';
+import { ProductService } from '../typescript/product.service';
+
 
 @Component({
   selector: 'app-header',
@@ -52,15 +51,5 @@ export class HeaderComponent {
     }
 
     this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For negative scrolling
-  }
-
-  @Output() returning_page = new EventEmitter;
-  
-  Return_previous_page() {
-    this.returning_page.emit("return");
-  }
-
-  Activate_shop_cart() {
-    this.returning_page.emit("shop_cart");
   }
 }

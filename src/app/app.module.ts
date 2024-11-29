@@ -1,41 +1,50 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";  
 
+import { provideRouter, RouterModule, RouterOutlet, withComponentInputBinding } from "@angular/router";
+import { RouterLink } from "@angular/router";
+import { RouterLinkActive } from "@angular/router";
+
 import { FormsModule } from "@angular/forms";
 import { provideHttpClient } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
-import { InitialPageComponent } from "./initial-page/initial-page.component";
+import { HomePageComponent } from "./home-page/home-page.component";
 import { FirstPageComponent } from "./shoes-page/shoes-page.component";
 import { DetailProductComponent } from "./detail-product/detail-product.component";
 import { HeaderComponent } from "./3-header/header.component";
-import { TestBuildComponent } from "./test-build/test-build.component";
 import { ShopCartComponent } from "./shop-cart/shop-cart.component";
 
-import { ProductService } from "./product/product.service";
-import { ProductData } from "./product/product-data";
+import { ProductService } from "./typescript/product.service";
+import { ProductData } from "./typescript/product-data";
+import { routes } from "./app.routes";
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        InitialPageComponent,
+        HomePageComponent,
         FirstPageComponent,
         DetailProductComponent,
-        TestBuildComponent,
         HeaderComponent,
         ShopCartComponent,
     ],
     imports: [
-    BrowserModule,
-    FormsModule,
-],
+        BrowserModule,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        FormsModule,
+    ],
     providers: [ 
         ProductData,
         ProductService,
         provideHttpClient(),
+        provideRouter(routes, withComponentInputBinding()),
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [
+        AppComponent,
+    ],
 })
 export class AppModule {
 

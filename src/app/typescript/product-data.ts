@@ -4,7 +4,7 @@ import { createShoes, Shoes } from './product';
 
 export class ProductData implements InMemoryDbService {
     products !: Shoes[]
-    id : number = 0;
+    id : number = 1;
     createDb() : Shoes[] {
         this.products = [
             createShoes({   // 1
@@ -290,7 +290,8 @@ export class ProductData implements InMemoryDbService {
                 imageFileType: ".png",
                 numberOfcolors: 1,
                 listOfcolors: ["Black", "White", "Anthracite", "Habanero Red"],
-                origin: [""], linkMain: "",
+                origin: [""], 
+                linkMain: "",
             }),
             createShoes({   // 23
                 nameOfproduct: "Jordan One Take 5 PF",
@@ -319,15 +320,12 @@ export class ProductData implements InMemoryDbService {
                 linkMain: "https://www.nike.com/vn/t/jordan-stadium-90-shoes-Jn6ZH4/DX4397-121",
             }),
             
-        ];
+        ];  
         for(let x of this.products) {
-            x.productId = this.id;
-            this.id++;
+            x.local_id = this.id;
+            this.id += 1;
         }
         return this.products;
-    }
-    updateDb() {    
-
     }
 }
 

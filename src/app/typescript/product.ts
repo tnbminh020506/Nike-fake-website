@@ -10,12 +10,13 @@ export interface Shoes {
     listOfcolors: string[],
     origin: string[],
     linkMain: string,
-    listOfsize?: number[];
-    productId?: number;
+    listOfsize: number[];
+    local_id: number;
 }
 
 export function createShoes(shoes : Partial<Shoes>) : Shoes {
     return {
+        local_id: -1,
         listOfsize: [40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45, 45.5, 46, 47, 47.5],
         nameOfproduct: shoes.nameOfproduct ?? "Default Name",  // Fallback value
         price: shoes.price ?? 0,  // Fallback value

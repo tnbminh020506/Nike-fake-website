@@ -36,6 +36,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
 .navbar li {
     color: rgb(150, 150, 150);
     list-style: none;

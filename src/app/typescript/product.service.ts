@@ -6,22 +6,20 @@ import { ProductData } from "./product-data";
 @Injectable()
 
 export class ProductService {
+
     productdata !: Shoes[];
     singleShoes !: Shoes;
-    detail_turn_on !: boolean;
 
-    valuePassing !: any;
-    passingCode !: string;
+    valuePassing : {key : string, value : any}[] = [];
+
     constructor(private sharedata : ProductData) {}
 
     //...............................................................................
     //...........................handling.data.service...............................
     //...............................................................................
+
     setData() {
         this.productdata = this.sharedata.createDb();
-    }
-    updateData() {
-        this.sharedata.updateDb();
     }
     getData() {
         return this.productdata;
@@ -30,6 +28,7 @@ export class ProductService {
     //...............................................................................
     // ........................passing.contemporary.product..........................
     //...............................................................................
+
     setShoes(product : Shoes) {
         this.singleShoes = product;
     }
@@ -37,16 +36,23 @@ export class ProductService {
         return this.singleShoes;
     }
 
-    setAnyValue(value : any, message : string) {
-        this.valuePassing = value;
-        this.passingCode = message;
+    setAnyValue(values : any, message : string) {
+        let obj = this.valuePassing.find(x => x.key === message);
+        if(obj !== undefined)
+            obj.value = values;
+        else
+            this.valuePassing.push({key : message, value : values});
     }
-    getAnyValue(message : string) {
-        if(message = this.passingCode)
-            return this.valuePassing;
+    getAnyValue(messages : string) {
+        let obj = this.valuePassing.find(x => x.key === messages);
+        if(obj !== undefined)
+            return obj.value;
+        return "unknown";
     }
 
     //...............................................................................
     //............................back.end.service...................................
     //...............................................................................
+                          
+
 }

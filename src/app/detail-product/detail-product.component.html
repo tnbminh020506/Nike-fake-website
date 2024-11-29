@@ -1,28 +1,48 @@
 <!-- <div class = "body"> </div> -->
 <div class = "main-detail">
-    <app-header (returning_page)="return_page($event)"> </app-header>
+    <app-header> </app-header>
 
     <div class = "navbar"> 
         @for(index of listOfSubImage; track index) {
-            <button (click) = "detail_image_event(index)" class = "detail-image-button"> 
-                <img class = "detail-image" [src] = "singleShoes.folderName + index + singleShoes.imageFileType">
-            </button>
+                <img 
+                    (click) = "detail_image_event(index)" 
+                    class = "detail-image"
+                    [src] = "singleShoes.folderName + index + singleShoes.imageFileType"
+                >
         }
     </div>
-    <img class = "image-display" [src] = "singleShoes.folderName + singleShoes.listOfDetailedImage[0] + singleShoes.imageFileType">    
+    <img 
+        class = "image-display" 
+        [src] = "singleShoes.folderName + singleShoes.listOfDetailedImage[0] + singleShoes.imageFileType"
+    >    
 
     <div class = "content-block">
+
         <h1> {{singleShoes.nameOfproduct}} </h1>
+
         <p> Men's Shoes </p>
+
+        <p> The height of image is {{main_image_height}} </p>
         <h4> <strong> {{finalPrice}} </strong> </h4>
-        <p> Select Size </p>
-        <div class = "adjust">
-            @for(size of singleShoes.listOfsize; track size) {
-                <button> EU {{size}} </button>
+
+        <div *ngIf = "sameShoesDisplay" class = "sameShoesDisplay">
+            @for(product of sameShoes; track product) {
+                    <img 
+                        (click)="changeProduct(product)"
+                        [src] = "product.folderName + product.imageDisplay + product.imageFileType" 
+                        style = "width: 20%; margin-right: 1%;"
+                        [id]="'button-' + product.local_id"
+                    > 
             }
         </div>
+
+        <p> Select Size </p>
+
+        <div *ngFor = "let size of singleShoes.listOfsize; let i = index" class = "adjust">
+            <button [id] = "'sizes-'+ i"> EU {{size}} </button>
+        </div>
         <div class = "add-item">
-            <button (click) = "add_to_shop_cart(singleShoes)" class = "save-item"> Add to Bag </button>
+            <button (click) = "add_to_shop_cart()" class = "save-item"> Add to Bag </button>
             <button class = "favourite"> Favourite </button>
         </div>    
         <p> {{singleShoes.description}} </p>

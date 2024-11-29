@@ -13,6 +13,7 @@
 
 .main-detail {
     width: 100%;
+    height: auto;
     position: relative;
     top: 0;
     /* background-color: rgba(255, 255, 255, 0.7); */
@@ -51,46 +52,35 @@
 /* .............................................................................. */
 
 .navbar {
-    width: var(--small-width-standard);
-    height: 500px;
+    width: 5%;
     overflow-y: scroll;
     position: sticky;
-    margin-left: var(--button-space-navbar);
+    margin-left: 12%;
     float: left;
     top: 2rem;
     /* background-color: rgba(149, 228, 234, 0.52); */
     margin-top: var(--main-detail-margin-top);
     z-index: 1;
+    /* border: 1px solid red; */
 }
 .navbar::-webkit-scrollbar {
     background: transparent;
     width: 0px;
 }
+
 .detail-image {
-    width: var(--small-width-standard);
-    height: var(--small-width-standard);
-    /* width: 60px; */
-    /* height: 60px; */
-    z-index: 100;
-    border-radius: 5px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 5%;
 }
-.detail-image-button {
-    border: none;
-}
-.main-detail .return-button {
-    width: var(--small-width-standard);
-    position: sticky;
-    float: left;
-    top: 2rem;
-    margin-top: var(--main-detail-margin-top);
-    z-index: 1;
-}
+
 .image-display {
-    width: var(--main-image-width);
-    height: 500px;
+    width: 30%;
+    height: auto;
     float: left;
     margin-top: var(--main-detail-margin-top);
-    margin-left: var(--image-space-navbar);
+    margin-left: 1%;
     position: sticky;
     top: 2rem;
     border-radius: 15px;
@@ -103,7 +93,7 @@
 .main-detail p{
     padding-top: 20px;
     /* padding-left: var(--content-margin-left); */
-    font-size: 17px;
+    font-size: 15.5px;
     line-height: 25px;
     width: 420px;
     position: relative;
@@ -125,7 +115,7 @@
 .main-detail li {
     max-width: 380px;
     margin-left: 20px;
-    font-size: 17px;
+    font-size: 15.5px;
     line-height: 25px;
     position: relative;
     padding-top: 7px;
@@ -137,15 +127,15 @@
 
 .content-block {
     /* background-color: antiquewhite; */
-    width: 420px;
-    margin-left: var(--content-margin-left);
+    width: 30%;
+    /* margin-left: var(--content-margin-left); this is on personal laptop (small window) */
+    margin-left: 50%;
+    border: 1px solid red;
     /* float: left; */
 }
 
 .adjust button {
-    width: 65px;
-    height: 40px;
-    font-size: 16px;
+    white-space: nowrap;
     border: 0.5px solid grey;
     border-radius: 5px;
     background-color: white;
@@ -159,19 +149,19 @@
     padding-top: 8px;
     /* padding-left: var(--content-margin-left); */
     margin-bottom: 25px;
-    width: 380px;
     position: relative;
+    display: inline;
 }
 .add-item{
     /* padding-left: var(--content-margin-left); */
     margin-top: 40px;
-    width: 420px;
+    width: 92%;
     margin-bottom: 50px;
 }
 
 .add-item .save-item {
-    width: 90%;
-    height: 60px;
+    width: 100%;
+    height: 50px;
     border-radius: 30px;
     font-size: 15px;
     background: black;
@@ -186,8 +176,8 @@
 
 .add-item .favourite {
     position: relative;
-    width: 90%;
-    height: 60px;
+    width: 100%;
+    height: 50px;
     border-radius: 30px;
     font-size: 15px;
     border: 1px solid grey;
@@ -198,4 +188,12 @@
     box-shadow: 10px 10px 10px lightgrey;
     background-color: rgba(255, 255, 255, 0.5);
 }
+
+.sameShoesDisplay {
+    margin-top: 20px;
+    display: inline-block;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
 

@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { Shoes } from '../product/product';
-import { map } from 'rxjs';
+import { Shoes } from '../typescript/product';
 
 @Component({
   selector: 'app-shop-cart',
@@ -15,49 +11,44 @@ export class ShopCartComponent {
 
   constructor(private http_method : HttpClient) {}
 
-  map_array : { [key : string] : string[] } = {};
+  map_array : { key : number, value : string[], prod : any }[] = [];
 
-  Shoes_list : any = [];
+  product_remove(val : any) {
+    let tmp = val.value.pop();
+    // console.log(tmp);
+    this.http_method.delete('http://localhost:5000/product/' + tmp).subscribe((resDatafromDelete : any) => {
+      console.log(resDatafromDelete);   
+      this.http_method.get('http://localhost:5000/product').subscribe(() => {
 
-  @Output() turn_of_shop_cart = new EventEmitter;
-
-  deactivate_shop_cart() {
-    this.turn_of_shop_cart.emit("deativate shop cart");
-  }
-
-  product_remove(value : any) {
-    this.http_method.delete('http://localhost:5000/product/' + value._id).subscribe((resDatafromDelete : any) => {
-      console.log(resDatafromDelete);
-      this.http_method.get('http://localhost:5000/product').subscribe((resData : any) => {
-        this.Shoes_list = resData;
-      });
+      });   
     })
+    if(val.value.length === 0) {
+      this.map_array = this.map_array.filter(obj => obj !== val)
+    }
   }
 
   ngOnInit() {
+
     this.http_method.get('http://localhost:5000/product').subscribe((resData : any) => {
-      // for(let product of resData) {
-      //     if(this.map_array[product.nameOfproduct] != undefined) {
-      //     this.map_array[product.nameOfproduct].push(product._id);
-      //   }
-      //   else
-      //     this.map_array[product.nameOfproduct] = [product._id];
-      // }
-
-      // for(let x of resData) {
-      //   let tmp = Object.assign({}, x, { listOfid : this.map_array[x.nameOfproduct]});
-      //   let find_res = this.Shoes_list.find((item : Shoes) => item.nameOfproduct === x.nameOfproduct);
-      //   if(find_res === undefined) {
-      //     this.Shoes_list.push(tmp);
-      //   }
-      // }
-
-      // for(let x of this.Shoes_list) {
-      //   delete x._id;
-      // }
-      this.Shoes_list = resData;
-
+      for(var x of resData) {
+        let find = this.map_array.find(val => val.key === x.local_id);
+        if(find !== undefined) {
+          find.value.push(x._id);
+        }
+        else {
+          let tmp = {
+            key: x.local_id,
+            value: [x._id],
+            prod: x,
+          };
+          this.map_array.push(tmp);
+        }
+      }
+      this.map_array = this.map_array.reverse();
+      
+      // this.Shoes_list = resData.reverse();
     });
+    
   }
 }
 
