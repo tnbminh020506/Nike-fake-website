@@ -21,8 +21,7 @@
         <h1> {{singleShoes.nameOfproduct}} </h1>
 
         <p> Men's Shoes </p>
-
-        <p> The height of image is {{main_image_height}} </p>
+        
         <h4> <strong> {{finalPrice}} </strong> </h4>
 
         <div *ngIf = "sameShoesDisplay" class = "sameShoesDisplay">
@@ -37,7 +36,7 @@
         </div>
 
         <p> Select Size </p>
-
+        <br>
         <div *ngFor = "let size of singleShoes.listOfsize; let i = index" class = "adjust">
             <button [id] = "'sizes-'+ i"> EU {{size}} </button>
         </div>

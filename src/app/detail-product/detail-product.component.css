@@ -16,6 +16,7 @@
     height: auto;
     position: relative;
     top: 0;
+    font-size: 120%;
     /* background-color: rgba(255, 255, 255, 0.7); */
     /* color: red; */
 }
@@ -93,9 +94,8 @@
 .main-detail p{
     padding-top: 20px;
     /* padding-left: var(--content-margin-left); */
-    font-size: 15.5px;
     line-height: 25px;
-    width: 420px;
+    width: 90%;
     position: relative;
 }
 .main-detail h1{
@@ -115,7 +115,7 @@
 .main-detail li {
     max-width: 380px;
     margin-left: 20px;
-    font-size: 15.5px;
+    font-size: 98%;
     line-height: 25px;
     position: relative;
     padding-top: 7px;
@@ -130,7 +130,7 @@
     width: 30%;
     /* margin-left: var(--content-margin-left); this is on personal laptop (small window) */
     margin-left: 50%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* float: left; */
 }
 
