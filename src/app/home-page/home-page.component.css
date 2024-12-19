@@ -49,8 +49,8 @@
 .card-information{
     position: relative;
     display: inline-block;
-    height: 300px;
-    width: 200px;
+    height: 50%;
+    width: 16%;
     background-color: transparent;
         
     /* choose if border appears whem clicking buttons */
@@ -64,7 +64,7 @@
     /* border: 5px solid white; */
 }
 .card-information p {
-    margin-top: 60%;
+    margin-top: 56%;
     margin-bottom: auto;
 }
 #Site {

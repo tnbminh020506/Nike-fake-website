@@ -1,8 +1,13 @@
 <app-header> </app-header>
-<div *ngFor="let shoes of map_array; let i = index" [ngClass] = "{ 'card-even' : i % 2 === 0, 'card-odd' : i % 2 !== 0 }"> 
+<div *ngFor="let shoes of map_array; let i = index" class = "card"> 
     <img class = "img" [src] = "shoes.prod.folderName + shoes.prod.imageDisplay + shoes.prod.imageFileType">
-    <div class = "text">
-        <h1> {{shoes.prod.nameOfproduct}} </h1>
-        <button (click)="product_remove(shoes)" > Remove from your cart </button>
+    <div class = "text-field">
+        <h2 style = "text-align: center;"> {{shoes.prod.nameOfproduct}} </h2>
+        <div class = "detail-info"> {{shoes.prod.price}} </div>
+        <div class = "detail-info" style = "background-color: rgb(153, 148, 144); color: black;"> Selected : {{shoes.value.length}} </div>
+        <button (click) = "product_remove(shoes)"> - </button>
+        <!-- <div class = "button">
+            <button (click)="product_remove(shoes)"> Remove from your cart </button>  
+        </div> -->            
     </div>
 </div>  
